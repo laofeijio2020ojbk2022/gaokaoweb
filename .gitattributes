@@ -8,4 +8,4 @@
 *.html linguist-language=HTML
 
 # JavaScript files
-*.js linguist-language=JavaScript
+django_demo/*.js linguist-language=JavaScript
