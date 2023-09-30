@@ -8,5 +8,5 @@ django_demo/app01/static/*.css linguist-language=CSS
 django_demo/app01/static/templates/*.html linguist-language=HTML
 
 # JavaScript files
-django_demo/app01/static/js/*.js linguist-language=JavaScript
+django_demo/app01/static/js/*.js linguist-vendored
 
