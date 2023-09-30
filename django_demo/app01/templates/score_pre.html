@@ -1,0 +1,96 @@
+{% extends 'header.html' %}
+
+{% block css %}
+    <style>
+        .ccontaner{
+            width: 40%;
+            height:200px;
+            margin: auto;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #4e555b;
+            border-radius: 15px;
+        }
+        .tablee{
+            margin: 20px;
+            margin-top: 50px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div class="ccontaner">
+        <div>
+            <h1 style="margin: 20px; margin-bottom: 40px; text-align: center;">分数预测</h1>
+        </div>
+
+        <div style="margin:20px ">
+            <form method="post" action="/score/pre" style="margin-left: 100px">
+                {% csrf_token %}
+                <input type="text" name="sc_name" placeholder="学校名称">
+
+                <input class="btn btn-primary" type="submit" value="提交"/>
+                <div style="color: red;">{{ error_msg }}</div>
+            </form>
+        </div>
+    </div>
+
+    <hr style="border-width: 3px; opacity: 0.5; border-style: solid; margin-top: 30px; margin-bottom: 100px">
+
+    <div class="tablee clearfix">
+        <div class="tablee clearfix">
+        <table class="table table-striped" style="box-shadow: 6px 6px 1px 1px #4e555b">
+            <thead class="thead-dark">
+                <tr>
+                    <th>学校ID</th>
+                    <th>学校名称</th>
+                    <th>省份ID</th>
+                    <th>省份名称</th>
+                    <th>21年最低分</th>
+                    <th>22年最低分</th>
+                    <th>预测分数变化</th>
+                    <th>21年最低位次</th>
+                    <th>22年最低位次</th>
+                    <th>预测位次变化</th>
+                    <th>平均分</th>
+                    <th>平均位次</th>
+                    <th>预测分数线</th>
+                    <th>预测录取最低位次</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                    <tr>
+                        <th>{{ item.ra_school_id }}</th>
+                        <th>{{ item.ra_school_name }}</th>
+                        <th>{{ item.ra_pro_id }}</th>
+                        <th>{{ item.ra_pro_name }}</th>
+                        <th>{{ item.ra_avg_min_2021 }}</th>
+                        <th>{{ item.ra_avg_min_2022 }}</th>
+                        <th>{{ item.ra_score_rate }}</th>
+                        <th>{{ item.ra_avg_min_section_2021 }}</th>
+                        <th>{{ item.ra_avg_min_section_2022 }}</th>
+                        <th>{{ item.ra_section_rate }}</th>
+                        <th>{{ item.ra_average_score }}</th>
+                        <th>{{ item.ra_average_section }}</th>
+                        <th>{{ item.ra_predict_score }}</th>
+                        <th>{{ item.ra_predict_section }}</th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+{% endblock %}
+
+
+

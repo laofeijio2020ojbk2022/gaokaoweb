@@ -1,0 +1,117 @@
+{% extends 'header.html' %}
+
+{% block css %}
+    <style>
+        .search{
+            margin-left: 5%;
+            margin-right: 5%;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #4e555b;
+            border-radius: 15px
+        }
+        .search .name{
+            display: inline-block;
+            float: left;
+            width: 7%;
+            margin-left: 1%;
+        }
+        .search .item{
+            display: inline-block;
+            float: left;
+            width: 24%;
+            margin: 2px;
+        }
+        .search form{
+            margin: 3%;
+        }
+
+        .tablee{
+            margin: 20px;
+            margin-top: 50px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div>
+        <h1 style="text-align: center;margin: 20px">分数查询</h1>
+    </div>
+
+    <div class="search">
+        <form action="/score/get " method="post" class="clearfix">
+            {% csrf_token %}
+            {% for field in from %}
+                <div class="name">{{ field.label }}</div>
+                <div class="item">{{ field }}</div>
+            {% endfor %}
+            <div style="margin-right: 30%; margin-left: 22%">
+                <input class="btn btn-primary" type="submit" value="提交" style="margin-top: 20px; width: 100%"/>
+                <div style="color: red; text-align: center">{{ error_msg }}</div>
+            </div>
+        </form>
+    </div>
+
+    <hr style="border-width: 3px; opacity: 0.5; border-style: solid; margin-top: 50px; margin-bottom: 20px">
+
+    <div class="tablee clearfix">
+        <table class="table table-striped" style="box-shadow: 6px 6px 1px 1px #4e555b">
+            <thead class="thead-dark">
+                <tr>
+                    <th>省份ID</th>
+                    <th>学校名称</th>
+                    <th>年份</th>
+                    <th>分科</th>
+                    <th>专业</th>
+                    <th>最高分</th>
+                    <th>最低分</th>
+                    <th>平均分</th>
+                    <th>最低位次</th>
+                    <th>类别1</th>
+                    <th>类别2</th>
+                    <th>类别3</th>
+                    <th>类别</th>
+                    <th>批次</th>
+                    <th>选课要求</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                    <tr>
+                        <th>{{ item.pro_id }}</th>
+                        <th>{{ item.st_school_name }}</th>
+                        <th>{{ item.st_year }}</th>
+                        <th>{{ item.st_type }}</th>
+                        <th>{{ item.st_spname }}</th>
+                        <th>{{ item.st_max }}</th>
+                        <th>{{ item.st_min }}</th>
+                        <th>{{ item.st_average }}</th>
+                        <th>{{ item.st_min_section }}</th>
+                        <th>{{ item.st_level1_name }}</th>
+                        <th>{{ item.st_level2_name }}</th>
+                        <th>{{ item.st_level3_name }}</th>
+                        <th>{{ item.st_zslx_name }}</th>
+                        <th>{{ item.st_local_batch_name }}</th>
+                        <th>{{ item.st_sg_info }}</th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+{#    {{ from }}#}
+{% endblock %}
+
+
+{% block js %}
+
+{% endblock %}
+
+
+

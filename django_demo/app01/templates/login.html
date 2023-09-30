@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+<!--     {% load static %}-->
+<!--    <link rel="stylesheet" href="{% static 'css/css.css' %}"/>-->
+
+    <style>
+        body{
+            background-image: url("../static/img/rose.jpg");
+            background-size: cover;
+        }
+        #main{
+            width: 480px;
+            height: 350px;
+            /*border: 1px solid #ff0000;*/
+            background-color: white;
+            opacity:0.9;/*透明度 0-1*/
+            border-radius: 10px;
+            position: absolute;
+            right: 35%;
+            top: 30%;
+        }
+        h1{
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-left: 20px;
+        }
+        .register{
+            margin-left: 20px;
+            color:silver;
+            font-size: 10px;
+        }
+        a{
+            text-decoration: none;/*去掉文本线*/
+        }
+        #user{
+            margin-top: 30px;
+        }
+        .p1{
+            line-height: 50px;
+            text-align: center;
+        }
+        .inp0{
+            width: 360px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: aliceblue;
+            border: 1px solid white;
+            outline: none;/*获得焦点时无任何显示*/
+            text-indent: 1em;/*缩进*/
+            font-size: 10px;
+        }
+
+        .login{
+            width: 420px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid white;
+            background-color: skyblue;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        .register:hover{
+            cursor:pointer;
+        }
+
+
+        .ribbon a:link,
+        .ribbon a:visited {
+            color: #000;
+            text-decoration: none;
+            height: 3.5em;
+            overflow: hidden;
+        }
+
+        .ribbon span {
+            background: #fff;
+            display: inline-block;
+            line-height: 3em;
+            padding: 0 1.5em;
+            margin-top: 0.5em;
+            position: relative;
+            -webkit-transition: background-color 0.2s, margin-top 0.2s;
+            /* Saf3.2+, Chrome */
+            -moz-transition: background-color 0.2s, margin-top 0.2s;
+            /* FF4+ */
+            -ms-transition: background-color 0.2s, margin-top 0.2s;
+            /* IE10 */
+            -o-transition: background-color 0.2s, margin-top 0.2s;
+            /* Opera 10.5+ */
+            transition: background-color 0.2s, margin-top 0.2s;
+        }
+
+        .ribbon a:hover span {
+            background: #FFD204;
+            margin-top: 0;
+        }
+
+        .ribbon span:before {
+            content: "";
+            position: absolute;
+            top: 3em;
+            left: 0;
+            border-right: 0.5em solid #9B8651;
+            border-bottom: 0.5em solid #fff;
+        }
+
+        .ribbon span:after {
+            content: "";
+            position: absolute;
+            top: 3em;
+            right: 0;
+            border-left: 0.5em solid #9B8651;
+            border-bottom: 0.5em solid #fff;
+        }
+
+        .videos span {
+            width: 400px;
+            margin-right: 100px;
+            margin-left: 300px;
+            color: #FFD204
+        }
+
+    </style>
+</head>
+<body>
+    <h1>登录</h1>
+    <form novalidate method="post">
+        {% csrf_token %}
+        <div id="main">
+            <h1>欢迎登录</h1>
+            <p class="register">没有账号？<a href="/admin/add">注册</a><a>|</a><a href="/house/page">返回首页</a></p>
+            <p class="p1">
+                用户名:<input type="text" name="p_name" placeholder="请输入用户名" class="inp0">
+            </p>
+            <p class="p1">
+                密&emsp;码:<input type="password" name="p_password" placeholder="请输入密码" class="inp0">
+            </p>
+            <p class="p1">
+                <button type="submit" class="login">登录</button>
+            </p>
+
+        </div>
+
+
+
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,119 @@
+{% extends 'header.html' %}
+
+{% block css %}
+    <style>
+        .momo{
+            margin: 20px auto;
+            width: 80%;
+            height: 200px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #4e555b;
+            border-radius: 15px;
+            background-color: orange;
+            opacity: 70%;
+        }
+        .momo .mimi{
+            display: inline-block;
+            float: left;
+            margin-top: 23px;
+            margin-left: 23px;
+            margin-right: 23px;
+            border-radius: 15px;
+            width: 150px;
+            height: 150px;
+        }
+        .momo .mimi .imgg img{
+            width: 100%;
+            height: 100%;
+            border-radius: 15%;
+        }
+
+        .momo .imim {
+            display: inline-block;
+            margin: 5px;
+            width: 75%;
+            margin-top: 20px;
+        }
+        .it a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .momo:hover{
+            background-color: red;
+        }
+
+        .ccontaner{
+            width: 60%;
+            height:230px;
+            margin: auto;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #4e555b;
+            border-radius: 15px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="ccontaner">
+        <div>
+            <h1 style="margin: 20px; margin-bottom: 40px; text-align: center;">智能推荐</h1>
+        </div>
+
+        <div style="margin:20px ">
+            <form method="post" action="/int/recom" style="margin-left: 100px">
+                {% csrf_token %}
+                <input style="margin: 10px; margin-left: 10%;" type="text" name="st_name" placeholder="姓名">
+                <input style="margin: 10px" type="password" name="st_password" placeholder="密码">
+                <div style="">
+                    <input style="width: 150px; margin-left: 30%" class="btn btn-primary" type="submit" value="提交" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="it">
+        {% for rer in data3 %}
+            <a class="clearfix" href="../school/info?sc_name={{ rer.sc_data.sc_name }}">
+            <div class="momo clearfix">
+                <div class="mimi">
+                    <div class="imgg">
+                        <img src="data:image/jpg;base64,{{ rer.icon }}" alt="">
+                    </div>
+                </div>
+                <div class="imim clearfix">
+                    <h1 style="float: left;display: inline-block">{{ rer.sc_data.sc_name }}</h1>
+                    <div style="float: left; display: inline-block;margin-left: 20px; width: 50%">
+                        <div>
+                            学校类型：{{ rer.sc_data.sc_level_name }}
+                            {{ rer.sc_data.sc_type_name }}
+                            {{ rer.sc_data.sc_school_nature_name }}
+                            {{ rer.sc_data.sc_dual_class_name }}
+                        </div>
+                        <div>学科评估：{{ rer.sc_data.sc_xueke_rank }}</div>
+                        <div>学校位置：{{ rer.sc_data.sc_address }}</div>
+                    </div>
+                </div>
+                <div><div>{{ rer.cot }}</div></div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+
+{% endblock %}
+
+
+

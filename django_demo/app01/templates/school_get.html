@@ -1,0 +1,42 @@
+{% extends 'header.html' %}
+
+{% block css %}
+    <style>
+        .ccontaner{
+            width: 40%;
+            height:200px;
+            margin: auto;
+            margin-top: 100px;
+            margin-bottom: 300px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #4e555b;
+            border-radius: 15px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div class="ccontaner">
+        <div>
+            <h1 style="margin: 20px; margin-bottom: 40px; text-align: center;">学校查询</h1>
+        </div>
+
+        <div style="margin:20px ">
+            <form method="get" action="/school/info" style="margin-left: 100px">
+                <input type="text" name="sc_name" placeholder="学校名称">
+
+                <input class="btn btn-primary" type="submit" value="提交"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block js %}
+
+{% endblock %}
+
+
+

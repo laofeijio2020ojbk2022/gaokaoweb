@@ -1,0 +1,72 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block css %}
+
+    <style>
+        .startt{
+            height: 50px;
+        }
+
+        .slider{
+            position: relative;
+            height: 500px;
+        }
+        .slider img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slider img.active{
+            opacity: 60%;
+        }
+
+        .endd{
+            margin-top: 50px;
+            height: 50px;
+        }
+        .endd span{
+            float: left;
+            display: inline-block;
+            width: 33%;
+            height: 20px;
+            text-align: center;
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="startt"></div>
+
+    <div class="contaner">
+        <div class="slider shadow bg-white rounded">
+            <img src="{% static 'img/913D6C1391C864450BA3EEBD718B7C42.jpg' %}" alt="">
+            <img src="{% static 'img/_2001109422__ab81c1b73a2c3ebb4ccbf2a5e41d86ef_1665800002_mmexport1654186133347_0_xg_0.jpg' %}" alt="">
+            <img src="{% static 'img/_666608873__e78e56af34228541f26307d0843c4829_2035529655_mmexport1656593928924_0_xg_0.jpg' %}" alt="">
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+    <script type="text/javascript">
+        (function () {
+            var slides = document.querySelectorAll('.slider img');
+            var currentSlide = 0;
+            var slideInterval = setInterval(nextSlider, 4000);
+            function nextSlider() {
+                slides[currentSlide].className = '';
+                currentSlide = (currentSlide +1) % slides.length;
+                slides[currentSlide].className = 'active';
+            }
+        })();
+    </script>
+
+{% endblock %}

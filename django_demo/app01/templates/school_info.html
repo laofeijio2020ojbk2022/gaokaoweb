@@ -1,0 +1,266 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ sc_data.sc_name }}详情页</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-4.6.2-dist/css/bootstrap.css' %}">
+    <style>
+        .continer{
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .search{
+
+        }
+        .search form{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .search .search_it{
+            width: 400px;
+            height: 40px;
+        }
+        .search .search_btn{
+            width: 100px;
+            height: 40px;
+        }
+
+        .imgs{
+            margin-top: 50px;
+            margin-bottom: 50px;
+            height: 150px;
+            width: 150px;
+            display: inline-block;
+        }
+        .imgs img{
+            height: 100%;
+            width: 100%;
+            border-radius: 15%;
+        }
+        .back_info{
+            background-color: orange;
+        }
+        .block{
+            display: inline-block;
+            height: 20px;
+            width: 320px;
+            color: white;
+            margin: 5px;
+        }
+
+        .rank{
+            width: 88px;
+            height: 100px;
+            background: #fff;
+            box-shadow: 0 4px 15px 0 rgba(0,0,0,.1);
+            border-radius: 8px;
+            margin-right: 10px;
+            display: inline-block;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            text-align: center;
+        }
+        .rank div{
+            color: #f60;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .info{
+            padding: 20px;
+            max-height: 300px;
+            color: #000;
+            box-shadow: 0 4px 15px 0 rgba(0,0,0,.1);
+            border-radius: 8px;
+            line-height: 25px;
+        }
+
+        .school{
+            margin: 20px;
+            display: inline-block;
+            width: 300px;
+            height: 200px;
+        }
+        .school img{
+            margin: 10px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bottom{
+            margin-top: 100px;
+            height: 300px;
+            background-color: #4e555b;
+            opacity: 0.75;
+        }
+    </style>
+</head>
+<body>
+    <div class="search">
+            <form method="get" action="/school/info">
+                <input class="search_it" type="text" name="sc_name" placeholder="{{ sc_data.sc_name }}">
+
+                <input class="btn btn-primary search_btn" type="submit" value="提交"/>
+                <div style="color: red;">{{ error_msg }}</div>
+            </form>
+    </div>
+
+    <div class="back_info clearfix">
+        <div class="continer">
+            <div style="display: inline-block; width: 20%; float: left">
+                <div class="imgs">
+                    <img src="data:image/jpg;base64,{{ icon }}" alt="">
+                </div >
+            </div>
+
+            <div style="display: inline-block; width: 80%; float: left">
+                <div class="block">
+                    <div style="font-size: 25px">学校名称：{{ sc_data.sc_name }}</div>
+                </div>
+                <div class="block">
+                    <div style="font-size: 25px">隶属机构：{{ sc_data.sc_belong }}</div>
+                </div>
+                <div class="block">
+                    <div style="font-size: 25px">建校时间：{{ sc_data.sc_create_date }}</div>
+                </div>
+                <div class="block">
+                    <div style="font-size: 25px">官方电话：{{ sc_data.sc_phone }}</div>
+                </div>
+                <div class="block" style="width: 100%">
+                    <div style="font-size: 25px">
+                        官方邮箱：{{ sc_data.sc_email }}，
+                        {{ sc_data.sc_school_email }}
+                    </div>
+                </div>
+                <div class="block" style="width: 100%">
+                    <div style="font-size: 25px">
+                        学校网址：{{ sc_data.sc_site }}，
+                        {{ sc_data.sc_school_site }}
+                    </div>
+                </div>
+                <div class="block" style="width: 100%">
+                    <div style="font-size: 25px">
+                        学校类型：{{ sc_data.sc_level_name }}
+                        {{ sc_data.sc_type_name }}
+                        {{ sc_data.sc_school_nature_name }}
+                        {{ sc_data.sc_dual_class_name }}
+                    </div>
+                </div>
+                <div class="block" style="width: 100%">
+                    <div style="font-size: 25px">学校地址：{{ sc_data.sc_address }}</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clearfix" style="display: block ">
+        <div style="display: inline-block; width: 45%; margin: 20px; float: left;">
+            <div class="rank">
+                <div>软科综合：</div>
+                <div>{{ sc_data.sc_ruanke_rank }}</div>
+            </div>
+            <div class="rank">
+                <div>武书连：</div>
+                <div>{{ sc_data.sc_wsl_rank }}</div>
+            </div>
+            <div class="rank">
+                <div>QS世界：</div>
+                <div>{{ sc_data.sc_qs_rank }}</div>
+            </div>
+            <div class="rank">
+                <div>校友会：</div>
+                <div>{{ sc_data.sc_xyh_rank }}</div>
+            </div>
+            <div class="rank">
+                <div>US世界：</div>
+                <div>{{ sc_data.sc_us_rank }}</div>
+            </div>
+        </div>
+
+        <div style="display: inline-block; width: 40%; margin: 20px; float: left;">
+            <div class="info">
+                {{ sc_data.sc_content }}
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+        <div class="continer" style="margin-top: 10px; margin-bottom: 10px; width: 85%">
+            <h3 style="margin-top: 50px">开设专业</h3>
+            <div style="margin-top: 10px">{{ sc_data.sc_dualclass }}</div>
+        </div>
+
+        <div class="continer" style="margin-top: 10px; margin-bottom: 10px; width: 85%">
+            <h3 style="margin-top: 50px">专业年限</h3>
+            <div style="margin-top: 10px">{{ sc_data.sc_special }}</div>
+        </div>
+
+        <div class="continer" style="margin-top: 10px; margin-bottom: 10px; width: 85%">
+            <h3 style="margin-top: 50px">校区</h3>
+            <div style="margin-top: 10px">{{ sc_data.sc_fenxiao }}</div>
+        </div>
+
+        <div class="continer" style="margin-top: 10px; margin-bottom: 10px; width: 85%">
+            <h3 style="margin-top: 50px">就业率、升学率、出国率</h3>
+            <div style="margin-top: 10px">{{ sc_data.sc_jobrate }}</div>
+        </div>
+
+        <div class="continer" style="margin-top: 10px; margin-bottom: 10px; width: 85%">
+            <h3 style="margin-top: 50px">毕业去往各省份比率</h3>
+            <div style="margin-top: 10px">{{ sc_data.sc_job_province }}</div>
+        </div>
+
+        <div class="continer" style="margin-top: 10px; margin-bottom: 10px; width: 85%">
+            <h3 style="margin-top: 50px">毕业去往各公司人数</h3>
+            <div style="margin-top: 10px">{{ sc_data.sc_company }}</div>
+        </div>
+
+        <div class="continer" style="margin-top: 10px; margin-bottom: 10px; width: 85%">
+            <h3 style="margin-top: 50px">学校环境</h3>
+            <div style="margin-top: 10px">{{ sc_data.sc_vote }}</div>
+        </div>
+
+    </div>
+    
+    <div class="continer">
+        <div class="school clearfix">
+            <img class="school_img float-left" src="{{ imgs.img_1 }}" alt="">
+        </div>
+        <div class="school clearfix">
+            <img class="school_img float-left" src="{{ imgs.img_2 }}" alt="">
+        </div>
+        <div class="school clearfix">
+            <img class="school_img float-left" src="{{ imgs.img_3 }}" alt="">
+        </div>
+        <div class="school clearfix">
+            <img class="school_img float-left" src="{{ imgs.img_4 }}" alt="">
+        </div>
+        <div class="school clearfix">
+            <img class="school_img float-left" src="{{ imgs.img_5 }}" alt="">
+        </div>
+        <div class="school clearfix">
+            <img class="school_img float-left" src="{{ imgs.img_6 }}" alt="">
+        </div>
+    </div>
+
+    <div class="bottom">
+
+    </div>
+
+
+    <scripts src="{% static 'js/jquery-3.7.0.js' %}"></scripts>
+    <scripts src="{% static 'plugins/bootstrap-4.6.2-dist/js/bootstrap.js' %}"></scripts>
+
+
+</body>
+</html>

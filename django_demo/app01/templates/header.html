@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小垃圾网站</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-4.6.2-dist/css/bootstrap.css' %}">
+    <style>
+        .header{
+            color: #b0b0b0;
+            background: #333;
+        }
+        .header .menu{
+            float: left;
+            color: white;
+        }
+        .header .account{
+            float: right;
+            color: white;
+        }
+        .header a{
+            color: #b0b0b0;
+            line-height: 40px;
+            display: inline-block;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        .header a:hover{
+            background: orange;
+            color: white;
+            line-height: 40px;
+            display: inline-block;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        .contaner{
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .bottom{
+            margin-top: 100px;
+            height: 300px;
+            background-color: #4e555b;
+            opacity: 0.75;
+        }
+    </style>
+
+    {% block css %}{% endblock %}
+
+</head>
+<body>
+<!-- <h1>主页</h1> -->
+
+    <div class="header clearfix">
+        <div class="contaner">
+            <div class="menu nav">
+                <a class="nav-link" href="../house/page">主页</a>
+                <a class="nav-link" href="../school/get">高校查询</a>
+                <a class="nav-link" href="../score/get">分数查询</a>
+                <a class="nav-link" href="../score/pre">分数预测</a>
+                <a class="nav-link" href="../ana/sc">高校分析</a>
+                <a class="nav-link" href="../int/recom">智能推荐</a>
+            </div>
+
+            <div class="account nav">
+                <a class="nav-link" href="../login">登录</a>
+                <a class="nav-link" href="../admin/add">注册</a>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+    <div class="bottom">
+
+    </div>
+
+
+    <scripts src="{% static 'js/jquery-3.7.0.js' %}"></scripts>
+    <scripts src="{% static 'plugins/bootstrap-4.6.2-dist/js/bootstrap.js' %}"></scripts>
+
+    {% block js %}{% endblock %}
+
+
+</body>
+</html>

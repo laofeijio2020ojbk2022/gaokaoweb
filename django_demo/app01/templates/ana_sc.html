@@ -1,0 +1,87 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block css %}
+    <script type="text/javascript"  src="{% static 'js/echarts.js' %}"></script>
+    <style>
+        .search{
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-bottom: 100px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #4e555b;
+            border-radius: 15px
+        }
+        .search .name{
+            display: inline-block;
+            float: left;
+            width: 7%;
+            margin-left: 1%;
+        }
+        .search .item{
+            display: inline-block;
+            float: left;
+            width: 24%;
+            margin: 2px;
+        }
+        .search form{
+            margin: 3%;
+        }
+
+        #chart-container {
+            margin: 0 auto;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #4e555b;
+            border-radius: 15px;
+            width: 900px;
+        }
+
+    </style>
+{% endblock %}
+
+
+{% block content %}
+
+    <div>
+        <h1 style="text-align: center;margin: 50px;">高校分析</h1>
+    </div>
+
+    <div class="search">
+        <form action="/ana/sc " method="post" class="clearfix">
+            {% csrf_token %}
+            {% for field in from %}
+                <div class="name">{{ field.label }}</div>
+                <div class="item">{{ field }}</div>
+            {% endfor %}
+            <div style="margin-right: 30%; margin-left: 22%">
+                <input class="btn btn-primary" type="submit" value="提交" style="margin-top: 20px; width: 100%"/>
+                <div style="color: red; text-align: center">{{ error_msg }}</div>
+            </div>
+        </form>
+    </div>
+
+    <hr style="border-width: 3px; opacity: 0.5; border-style: solid; margin-top: 100px; margin-bottom: 100px">
+
+    <div>
+        <div id="chart-container">{{ theline | safe }}</div>
+    </div>
+
+    <hr style="border-width: 3px; opacity: 0.5; border-style: solid; margin-top: 100px; margin-bottom: 100px">
+
+    <div>
+        <div id="chart-container">{{ thebar | safe }}</div>
+    </div>
+
+{#    <iframe src="{% static 'draw/text.html' %}" style="width: 600px;height: 400px"></iframe>#}
+
+{% endblock %}
+
+
+{% block js %}
+
+{% endblock %}
+
+
+

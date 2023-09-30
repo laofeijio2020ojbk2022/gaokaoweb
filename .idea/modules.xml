@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../BiSheServer-master/.idea/BiSheServer.iml" filepath="$PROJECT_DIR$/../BiSheServer-master/.idea/BiSheServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/django_demo/.idea/django_demo.iml" filepath="$PROJECT_DIR$/django_demo/.idea/django_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../django_test/.idea/django_test.iml" filepath="$PROJECT_DIR$/../django_test/.idea/django_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/gaoKao.iml" filepath="$PROJECT_DIR$/.idea/gaoKao.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>注册</h1>
+    <form method="post" action="/register">
+
+        {% csrf_token %}
+
+
+
+        <span style="color: red;">{{ error_msg }}</span>
+    </form>
+
+</body>
+</html>

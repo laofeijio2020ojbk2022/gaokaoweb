@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.3.7-dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.css' %}">
+    <style>
+        .navbar {
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#">后台管理人员管理界面</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/house/page">返回首页</a></li>
+                <li><a href="/admin/add">注册用户</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 编辑你的个人信息</div>
+        <div class="panel-body">
+            <form class="form-inline">
+                {% csrf_token %}
+                <div  style="margin: 10px 20px">
+                        <label>姓别</label>
+                        <input type="text" style="margin: 10px 20px" class="form-control" placeholder="姓别" name="p_sex"/>
+                    </div>
+
+                    <div style="margin: 10px 20px">
+                        <label>年龄</label>
+                        <input type="text" style="margin: 10px 20px" class="form-control" placeholder="年龄" name="p_age"/>
+                    </div>
+
+                    <div style="margin: 10px 20px">
+                        <label>姓名</label>
+                        <input type="text" style="margin: 10px 20px" class="form-control" placeholder="姓名" name="p_word"/>
+                    </div>
+
+                    <div style="margin: 10px 20px">
+                        <label>分数</label>
+                        <input type="text" style="margin: 10px 20px" class="form-control" placeholder="分数" name="p_score"/>
+                    </div>
+
+                    <div style="margin: 10px 20px">
+                        <label>省份</label>
+                        <input type="text" style="margin: 10px 20px" class="form-control" placeholder="省份" name="p_ro"/>
+                    </div>
+
+                    <div style="margin: 10px 20px">
+                        <label>选课</label>
+                        <input type="text" style="margin: 10px 20px" class="form-control" placeholder="选课" name="p_sp"/>
+                    </div>
+                <button type="submit" style="margin: 10px 20px" class=" btn btn-success">
+                    <i class="fa fa-save"  aria-hidden="true"></i> 保持并添加进入表单
+                </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
