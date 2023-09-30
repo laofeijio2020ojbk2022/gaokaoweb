@@ -1,0 +1,11 @@
+# Python files
+*.py linguist-language=Python
+
+# CSS files
+*.css linguist-language=CSS
+
+# HTML files
+*.html linguist-language=HTML
+
+# JavaScript files
+*.js linguist-language=JavaScript
