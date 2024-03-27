@@ -57,4 +57,4 @@
 
 - 如果代码对你有帮助，请杯奶茶吧(*^▽^*)
 
-<img src="img/收款码.jpg" width = "100" alt="收款码" align=center />
+<img src="img/收款码.jpg" width = "300" alt="收款码" align=center />
